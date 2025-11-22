@@ -3,12 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css"> <!-- optional -->
-    <script defer src="script.js"></script>
-    <title>Song Generator</title>
+    <title>Mood Mixer</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Song Generator</h1>
-    <button>test</button>
+
+    <div id="main-container">
+        <header>
+            <h1>
+                The Mood Mixer
+            </h1>
+            <p>
+                Select your vibe to start the flow.
+            </p>
+        </header>
+
+        <div id="mood-grid">
+            <div class="mood-card" onclick="handleMoodClick('Workout')">
+                <div class="mood-icon">🏋️‍♂️</div>
+                <h2 class="mood-name">Workout</h2>
+            </div>
+            <div class="mood-card" onclick="handleMoodClick('Driving')">
+                <div class="mood-icon">🚗</div>
+                <h2 class="mood-name">Driving</h2>
+            </div>
+            <div class="mood-card" onclick="handleMoodClick('Study')">
+                <div class="mood-icon">📚</div>
+                <h2 class="mood-name">Study</h2>
+            </div>
+            <div class="mood-card" onclick="handleMoodClick('Commute')">
+                <div class="mood-icon">🚌</div>
+                <h2 class="mood-name">Commute</h2>
+            </div>
+            <div class="mood-card" onclick="handleMoodClick('Coding')">
+                <div class="mood-icon">💻</div>
+                <h2 class="mood-name">Coding</h2>
+            </div>
+            <div class="mood-card" onclick="handleMoodClick('Sleep')">
+                <div class="mood-icon">😴</div>
+                <h2 class="mood-name">Sleep</h2>
+            </div>
+        </div>
+
+        <div id="message-box" style="display: none;" role="alert">
+            <span id="message-text"></span>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+
 </body>
 </html>
