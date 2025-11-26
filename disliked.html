@@ -3,22 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Now Playing</title>
+    <title>Disliked Songs - Mood Mixer</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
 <body>
 
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="nowPlaying.html">Now Playing</a></li> 
+            <li><a href="liked.html">Liked</a></li>
+            <li><a href="disliked.html">Disliked</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+    </nav>
+
     <div id="main-container">
         <header>
-        <nav>
-            <ul>
-                <li><a href="index.html">The Mood Mixer</a></li>
-                <li><a href="nowPlaying.html">Now Playing</a></li>
-                <li><a href="liked.html">Liked</a></li>
-                <li><a href="disliked.html">Disliked</a></li>
-                <li><a href="about.html">About</a></li>
-            </ul>
-        </nav>
+            <h1>
+                🚫 Disliked Songs
+            </h1>
+            <p>
+                Songs you've skipped from your flow.
+            </p>
         </header>
-</div>
+
+        <section id="disliked-songs-list" class="song-list">
+            <p id="empty-message">No disliked songs yet.</p>
+        </section>
+
+    </div>
+
+</body>
+</html>
