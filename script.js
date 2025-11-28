@@ -2,7 +2,7 @@
 class PlaybackInteractions {
     //Object initialization
     constructor() {
-        //Playlist Pending
+        //Playlist Placeholder
         this.currentSong = null;
         this.isPlaying = false;
         this.isLiked = false;
@@ -14,14 +14,19 @@ class PlaybackInteractions {
     init() {
         this.bindPlaybackButtons();
     }
-    //----Play/Pause/Previous/Next-btn unction----
+    //----Play/Pause/Previous/Next-btn Click Event----
     bindPlaybackButtons() {
         const playPauseBtn = document.getElementById('play-pause-btn');
+        const prevBtn = document.getElementById('prev-btn');
 
         if (playPauseBtn) {
             playPauseBtn.addEventListener('click', () => this.togglePlayPause());
         }
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => this.playPrevious());
+        }
     }
+    //Play/Pause Fucntion
     togglePlayPause() {
         this.isPlaying = !this.isPlaying;
 
@@ -35,6 +40,13 @@ class PlaybackInteractions {
             this.currentSong.pause();
             icon.textContent = '▶️';  // play icon
         }
+    }
+    //Previous Song Function
+    playPrevious() {
+        this.currentIndex--;
+        this.loadSong(this.currentIndex);
+        console.log("Previous song triggered");
+        this.loadSong(index - 1);
     }
 }
 
