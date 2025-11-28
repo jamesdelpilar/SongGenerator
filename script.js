@@ -18,12 +18,16 @@ class PlaybackInteractions {
     bindPlaybackButtons() {
         const playPauseBtn = document.getElementById('play-pause-btn');
         const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
 
         if (playPauseBtn) {
             playPauseBtn.addEventListener('click', () => this.togglePlayPause());
         }
         if (prevBtn) {
             prevBtn.addEventListener('click', () => this.playPrevious());
+        }
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => this.playNext());
         }
     }
     //Play/Pause Fucntion
@@ -47,6 +51,13 @@ class PlaybackInteractions {
         this.loadSong(this.currentIndex);
         console.log("Previous song triggered");
         this.loadSong(index - 1);
+    }
+    //Next Song Function
+    playNext() {
+        this.currentIndex++;
+        this.loadSong(this.currentIndex);
+        console.log("Next song triggered");
+        this.loadSong(index + 1);
     }
 }
 
