@@ -53,12 +53,7 @@ class PlaybackInteractions {
         this.loadSong(index - 1);
     }
     //Next Song Function
-    playNext() {
-        this.currentIndex++;
-        this.loadSong(this.currentIndex);
-        console.log("Next song triggered");
-        this.loadSong(index + 1);
-    }
+
 }
 
 
