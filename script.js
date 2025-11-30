@@ -10,16 +10,25 @@ const songsByMood = {
         { title: "Eye of the Tiger by Survivor",  embedUrl: "https://www.youtube.com/watch?v=XxxfQ7-aMrE" },
         { title: "Lose Yourself by Eminem",  embedUrl: "https://www.youtube.com/watch?v=tR1ECf4sEpw" },
         { title: "Uptown Funk by Bruno Mars",  embedUrl: "https://www.youtube.com/watch?v=W8FUmkw3a4U" },
-        { title: "Can’t Hold Us by Macklemore & Ryan Lewis",  embedUrl: "https://www.youtube.com/watch?v=W8FUmkw3a4U" },
-
-      ]
+        { title: "Can’t Hold Us by Macklemore & Ryan Lewis",  embedUrl: "https://www.youtube.com/watch?v=VG3JsmOmDqw" },
+        { title: "Turn Down for What – DJ Snake & Lil Jon", embedUrl: "https://www.youtube.com/watch?v=QFy0hQ3lY-w" },
+        { title: "POWER – Kanye West", embedUrl: "https://www.youtube.com/watch?v=chPDTUjnWgA" },
+        { title: "Titanium – David Guetta ft. Sia", embedUrl: "https://www.youtube.com/watch?v=P-gWGlf_VrY" },
+        { title: "Till I Collapse – Eminem", embedUrl: "https://www.youtube.com/watch?v=Obim8BYGnOE" },
+        { title: "Remember the Name – Fort Minor", embedUrl: "https://www.youtube.com/watch?v=MxhYgn7oUzQ" },
+        { title: "Don’t Start Now – Dua Lipa", embedUrl: "https://www.youtube.com/watch?v=oygrmJFKYZY" },
+        { title: "Levitating – Dua Lipa", embedUrl: "https://www.youtube.com/watch?v=WHuBW3qKm9g" },
+        { title: "Pepas – Farruko", embedUrl: "https://www.youtube.com/watch?v=acm6O4WwgBg" },
+        { title: "Blinding Lights – The Weeknd", embedUrl: "https://www.youtube.com/watch?v=XwxLwG2_Sxk" },
+        { title: "Heat Waves – Glass Animals", embedUrl: "https://www.youtube.com/embed/WORKOUT_HEATWAVES" }
+      ],
 
     }
-    // ===== 2. Queue state =====
+        // ===== 3. Shuffle =====
+
     let currentQueue = [];
     let currentIndex = 0;
 
-    // ===== 3. Shuffle helper =====
     function shuffleArray(arr) {
       const copy = arr.slice();
       for (let i = copy.length - 1; i > 0; i--) {
@@ -29,7 +38,7 @@ const songsByMood = {
       return copy;
     }
 
-    // ===== 4. Build random unique queue for a mood =====
+    // ===== 4. Build random queue for a mood =====
     function buildQueueForMood(mood) {
       const songs = songsByMood[mood];
       if (!songs || songs.length === 0) {
@@ -44,70 +53,7 @@ const songsByMood = {
       playCurrentSong();
     }
 
-    // ===== 5. Play current song =====
-    function playCurrentSong() {
-      if (!currentQueue.length) return;
+  
 
-      const song = currentQueue[currentIndex];
-      const playerDiv = document.getElementById("player");
-      const nowPlaying = document.getElementById("nowPlaying");
+    
 
-      nowPlaying.textContent = "Now playing: " + song.title;
-
-      playerDiv.innerHTML = `
-        <iframe
-          width="560"
-          height="315"
-          src="${song.embedUrl}"
-          frameborder="0"
-          allow="autoplay; encrypted-media"
-          allowfullscreen>
-        </iframe>
-      `;
-
-      renderQueue();
-    }
-
-    // ===== 6. Next / Previous =====
-    function playNextSong() {
-      if (!currentQueue.length) return;
-      currentIndex = (currentIndex + 1) % currentQueue.length;
-      playCurrentSong();
-    }
-
-    function playPreviousSong() {
-      if (!currentQueue.length) return;
-      currentIndex = (currentIndex - 1 + currentQueue.length) % currentQueue.length;
-      playCurrentSong();
-    }
-
-    // ===== 7. Render queue =====
-    function renderQueue() {
-      const queueList = document.getElementById("queueList");
-      queueList.innerHTML = "";
-
-      currentQueue.forEach((song, index) => {
-        const li = document.createElement("li");
-        li.textContent = (index + 1) + ". " + song.title;
-
-        if (index === currentIndex) {
-          li.style.fontWeight = "bold";
-        }
-
-        li.addEventListener("click", () => {
-          currentIndex = index;
-          playCurrentSong();
-        });
-
-        queueList.appendChild(li);
-      });
-    }
-
-    // ===== 8. Hook up UI =====
-    document.getElementById("buildQueueBtn").addEventListener("click", () => {
-      const mood = document.getElementById("moodSelect").value;
-      buildQueueForMood(mood);
-    });
-
-    document.getElementById("nextBtn").addEventListener("click", playNextSong);
-    document.getElementById("prevBtn").addEventListener("click", playPreviousSong);
