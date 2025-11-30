@@ -5,43 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mood Mixer</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
+    <header>
+     <nav>
+            <ul>
+                <li><a href="index.html">The Mood Mixer</a></li>
+                <li><a href="nowPlaying.html">Now Playing</a></li>
+                <li><a href="liked.html">Liked</a></li>
+                <li><a href="disliked.html">Disliked</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
 
     <div id="main-container">
-        <header>
+        
             <h1>
                 The Mood Mixer
             </h1>
             <p>
-                Select your vibe to start the flow.
+                Select your vibe to start the flow
             </p>
-        </header>
 
         <div id="mood-grid">
-            <div class="mood-card" onclick="handleMoodClick('Workout')">
-                <div class="mood-icon">🏋️‍♂️</div>
-                <h2 class="mood-name">Workout</h2>
+            <div class="mood-card image-card" onclick="handleMoodClick('Workout')">
+                <img src="images/Workout.png" alt="Workout Playlist Cover" class="mood-image">
             </div>
-            <div class="mood-card" onclick="handleMoodClick('Driving')">
-                <div class="mood-icon">🚗</div>
-                <h2 class="mood-name">Driving</h2>
+            <div class="mood-card image-card" onclick="handleMoodClick('Driving')">
+                <img src="images/Driving.png" alt="Driving Playlist Cover" class="mood-image">
             </div>
-            <div class="mood-card" onclick="handleMoodClick('Study')">
-                <div class="mood-icon">📚</div>
-                <h2 class="mood-name">Study</h2>
+            <div class="mood-card image-card" onclick="handleMoodClick('Study')">
+                <img src="images/Study 1.1.png" alt="Study Playlist Cover" class="mood-image">
             </div>
-            <div class="mood-card" onclick="handleMoodClick('Commute')">
-                <div class="mood-icon">🚌</div>
-                <h2 class="mood-name">Commute</h2>
+            <div class="mood-card image-card" onclick="handleMoodClick('Commute')">
+                <img src="images/Commute.png" alt="Commute Playlist Cover" class="mood-image">
             </div>
-            <div class="mood-card" onclick="handleMoodClick('Coding')">
-                <div class="mood-icon">💻</div>
-                <h2 class="mood-name">Coding</h2>
+            <div class="mood-card image-card" onclick="handleMoodClick('Coding')">
+                <img src="images/Coding.png" alt="Coding Playlist Cover" class="mood-image">
             </div>
-            <div class="mood-card" onclick="handleMoodClick('Sleep')">
-                <div class="mood-icon">😴</div>
-                <h2 class="mood-name">Sleep</h2>
+            <div class="mood-card image-card" onclick="handleMoodClick('Sleep')">
+                <img src="images/Sleep.png" alt="Sleep Playlist Cover" class="mood-image">
             </div>
         </div>
 
@@ -51,6 +56,5 @@
 
     </div>
 
-    <script src="script.js"></script>
 </body>
 </html>
