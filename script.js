@@ -61,16 +61,27 @@ class PlaybackInteractions {
         console.log("Next song triggered");
         this.loadSong(index + 1);
     }
-    //---Like button function---
+    //---Like button icon switch---
     toggleLike() {
-    this.isLiked = !this.isLiked;
-    this.isDisliked = false;
+        this.isLiked = !this.isLiked;
+        this.isDisliked = false;
 
-    const likeBtn = document.querySelector('#like-btn .icon');
-    const dislikeBtn = document.querySelector('#dislike-btn .icon');
-    //---Pending image from frontend---
-    if (likeBtn) likeBtn.textContent = this.isLiked ? 'Image Pending' : 'Image Pending';
-    if (dislikeBtn) dislikeBtn.textContent = 'Image Pending';
+        const likeBtn = document.querySelector('#like-btn .icon');
+        const dislikeBtn = document.querySelector('#dislike-btn .icon');
+        //---Pending image from frontend---
+        if (likeBtn) likeBtn.textContent = this.isLiked ? 'Image Pending' : 'Image Pending';
+        if (dislikeBtn) dislikeBtn.textContent = 'Image Pending';
+    }
+    //---Dislike button icon switch---
+    toggleDislike() {
+        this.isDisliked = !this.isDisliked;
+        this.isLiked = false;
+
+        const dislikeBtn = document.querySelector('#dislike-btn .icon');
+        const likeBtn = document.querySelector('#like-btn .icon');
+        //---Pending image from frontend---
+        if (dislikeBtn) dislikeBtn.textContent = this.isDisliked ? 'Image Pending' : 'Image Pending';
+        if (likeBtn) likeBtn.textContent = 'Image Pending';
     }
 }
 //================================
