@@ -28,14 +28,14 @@ function generateRandomSong(mood) {
 }
 
 // Add to liked songs
-likeBtn.addEventListener("click", () => {
-    addSongToList(currentSong, likedList);
-});
+//likeBtn.addEventListener("click", () => {
+//    addSongToList(currentSong, likedList);
+//});
 
 // Add to disliked songs
-dislikeBtn.addEventListener("click", () => {
-    addSongToList(currentSong, dislikedList);
-});
+//dislikeBtn.addEventListener("click", () => {
+//    addSongToList(currentSong, dislikedList);
+//});
 
 // Add song to chosen list
 function addSongToList(song, listElement) {
