@@ -153,16 +153,17 @@ p {
     align-items: center;
     gap: 20px;
     margin: 30px;
+    margin-top: 10px;
 }
 
 .control-btn {
     background-color: #ffffff;
     border: 2px solid #c4c4c4;
     border-radius: 12px;
-    padding: 5px 5px 5px 5px;
+    padding: 3px 3px 3px 3px;
     cursor: pointer;
     color: white;
-    font-size: 2.5rem;
+    font-size: 2.7rem;
 }
 
 .control-btn:hover {
@@ -172,6 +173,22 @@ p {
 .control-icon {
     display: flex;
     align-items: center;
+}
+
+.rating-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 1px;
+    margin-bottom: 1px;
+    margin-top: 1px;
+}
+
+.rating-btn {
+    background-color: #f1f1f100;
+    font-size: 2.5rem;
+    border: none;
+    cursor: pointer;
 }
 
 #player-container {
