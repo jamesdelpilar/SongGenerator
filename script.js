@@ -117,9 +117,8 @@ const dislikeIcon = document.querySelector('#dislike-btn .control-icon');
 //---Play/Pause Fucntion---
 function togglePlayPause() {
     isPlaying = !isPlaying;
-
     if (playPauseIcon) {
-        // Use Ternary Operator to switch icon: Playing (true) shows Pause icon
+        //Ternary Operator for code clarity
         playPauseIcon.textContent = isPlaying ? '⏸️' : '▶️';
     }
     //Debug output
