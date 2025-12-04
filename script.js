@@ -105,6 +105,10 @@ const songsByMood = {
 //  Kuan: Playback Interactions
 //================================
 
+//Boolean Initialization
+let isPlaying = false;
+let isLiked = false;
+let isDisliked = false;
 //DOM References
 const playPauseIcon = document.querySelector('#play-pause-btn .control-icon');
 const likeIcon = document.querySelector('#like-btn .control-icon');
