@@ -119,12 +119,11 @@ function togglePlayPause() {
     isPlaying = !isPlaying;
 
     if (playPauseIcon) {
-        currentSong.play();
-        icon.textContent = '⏸️';  // pause icon
-    } else {
-        this.currentSong.pause();
-        icon.textContent = '▶️';  // play icon
+        // Use Ternary Operator to switch icon: Playing (true) shows Pause icon
+        playPauseIcon.textContent = isPlaying ? '⏸️' : '▶️';
     }
+    //Debug output
+    console.log("Play/Pause triggered");
 }
 
 //---Previous Song Function---
