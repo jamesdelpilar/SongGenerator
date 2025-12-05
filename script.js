@@ -128,19 +128,27 @@ function togglePlayPause() {
 //---Previous Song Function---
 function playPrevious() {
     currentIndex--;
-    loadSong(currentIndex);
+    //loadSong(currentIndex); "Song function pending"
+    //Reset icon once song plays automatically
+    isPlaying = true;
+    if (playPauseIcon) {
+        playPauseIcon.textContent = '⏸️'; 
+    }
     //Debug Output
     console.log("Previous song triggered");
-    loadSong(index - 1);
 }
 
 //---Next Song Function---
 function playNext() {
     currentIndex++;
-    loadSong(currentIndex);
+    //loadSong(currentIndex); "Song function pending"
+    //Reset icon once song plays automatically
+    isPlaying = true;
+    if (playPauseIcon) {
+        playPauseIcon.textContent = '⏸️'; // Show pause icon (it's playing)
+    }
     //Debug Output
     console.log("Next song triggered");
-    loadSong(index + 1);
 }
 
 //---Like button icon switch---
