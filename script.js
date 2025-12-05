@@ -155,18 +155,30 @@ function playNext() {
 function addToLikedSongs() {
     isLiked = !isLiked;
     isDisliked = false;
-    //---Pending image from frontend---
-    if (likeBtn) likeBtn.textContent = isLiked ? 'Image Pending' : 'Image Pending';
-    if (dislikeBtn) dislikeBtn.textContent = 'Image Pending';
+    //Icon toggle
+    if (likeIcon) {
+        likeIcon.style.color = isLiked ? '👍' : '👍🏻';
+    }
+    if (dislikeIcon) {
+        dislikeIcon.style.color = '👍🏻';
+    }
+    //Debug Output
+    console.log("Like button triggered");
 }
 
 //---Dislike button icon switch---
 function addToDislikedSongs() {
     isDisliked = !isDisliked;
     isLiked = false;
-    //---Pending image from frontend---
-    if (dislikeBtn) dislikeBtn.textContent = isDisliked ? 'Image Pending' : 'Image Pending';
-    if (likeBtn) likeBtn.textContent = 'Image Pending';
+    if (dislikeIcon) {
+        //Icon toggle
+        dislikeIcon.style.color = isDisliked ? '👎' : '👎🏻';
+    }
+    if (likeIcon) {
+        likeIcon.style.color = '👎🏻';
+    }
+    //Debug Output
+    console.log("Dislike button triggered");
 }
 //================================
 //  Kuan: Playback Interactions    
