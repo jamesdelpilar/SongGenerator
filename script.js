@@ -72,8 +72,8 @@ const songsByMood = {
     }
         // ===== 3. Shuffle =====
 
-    let currentQueue = [];
-    let currentIndex = 0;
+    //let currentQueue = [];
+    //let currentIndex = 0;
 
     function shuffleArray(arr) {
       const copy = arr.slice();
