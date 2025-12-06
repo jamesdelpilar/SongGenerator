@@ -43,6 +43,7 @@ function addSongToList(song, listElement) {
     li.textContent = song;
     listElement.appendChild(li);
 }
+
 //================================
 //  Udhay: Audio-Playback
 //================================
@@ -183,3 +184,127 @@ function addToDislikedSongs() {
 //================================
 //  Kuan: Playback Interactions    
 //================================
+
+/*************************************
+    Udhay: Audio PLayback
+ *************************************/
+
+
+/*************************************
+ * GLOBAL STATE
+ *************************************/
+let currentQueue = [];
+let currentIndex = 0;
+let audioElement = null; 
+
+
+/*************************************
+ * SHUFFLE / RANDOMIZER
+ *************************************/
+function shuffleArray(arr) {
+  const copy = arr.slice(); 
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy;
+}
+
+
+/*************************************
+ * BUILD QUEUE FOR MOOD
+ *************************************/
+function buildQueueForMood(mood) {
+  if (typeof songsByMood === "undefined") {
+    console.error("songsByMood is not defined. Load songs.js first.");
+    return;
+  }
+
+  const moodKey = mood.toLowerCase();
+  const songs = songsByMood[moodKey];
+
+  if (!songs || songs.length === 0) {
+    alert("No songs available for this mood.");
+    return;
+  }
+
+  currentQueue = shuffleArray(songs);
+  currentIndex = 0;
+  loadCurrentSong();
+  renderQueue();
+}
+
+
+/*************************************
+ * LOAD + PLAY CURRENT SONG
+ *************************************/
+function loadCurrentSong() {
+  if (!currentQueue.length) return;
+
+  const song = currentQueue[currentIndex];
+
+  const playerDiv = document.getElementById("player");
+  const nowPlaying = document.getElementById("nowPlaying");
+
+  if (nowPlaying) {
+    nowPlaying.textContent = "Now playing: " + song.title;
+  }
+
+  if (!playerDiv) return;
+
+  playerDiv.innerHTML = `
+    <audio id="audio-player" controls autoplay src="${song.file}">
+      Your browser does not support the audio element.
+    </audio>
+  `;
+
+  audioElement = document.getElementById("audio-player");
+
+  if (!audioElement) return;
+
+  audioElement.addEventListener("ended", () => {
+    currentIndex = (currentIndex + 1) % currentQueue.length;
+    loadCurrentSong();
+  });
+
+  audioElement.play().catch(() => {
+    console.log("Autoplay blocked until the user interacts with the page.");
+  });
+
+  renderQueue();
+}
+
+
+/*************************************
+ * DISPLAY QUEUE
+ *************************************/
+function renderQueue() {
+  const queueList = document.getElementById("queueList");
+  if (!queueList) return;
+
+  queueList.innerHTML = "";
+
+  currentQueue.forEach((song, index) => {
+    const li = document.createElement("li");
+    li.textContent = (index + 1) + ". " + song.title;
+
+    if (index === currentIndex) {
+      li.style.fontWeight = "bold";
+    }
+
+    queueList.appendChild(li);
+  });
+  
+}
+
+/*************************************
+    Udhay: Audio Playback
+ *************************************/
+
+
+
+
+
+
+
+
