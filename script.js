@@ -14,7 +14,7 @@ const listsSection = document.getElementById("lists-section");
 function handleMoodClick(mood) {
     // Example: Replace with your real generator
     currentSong = generateRandomSong(mood);
-
+    
     currentSongDisplay.textContent = currentSong;
 
     // Show song area + lists
@@ -43,6 +43,7 @@ function addSongToList(song, listElement) {
     li.textContent = song;
     listElement.appendChild(li);
 }
+
 //================================
 //  Udhay: Audio-Playback
 //================================
@@ -101,92 +102,209 @@ const songsByMood = {
   
 
     
-
+//================================
 //  Kuan: Playback Interactions
 //================================
-class PlaybackInteractions {
-    //Object initialization
-    constructor() {
-        //Playlist Placeholder
-        this.currentSong = null;
-        this.isPlaying = false;
-        this.isLiked = false;
-        this.isDisliked = false;
 
-        this.init();
-    }
-    //Page load initialization
-    init() {
-        this.bindPlaybackButtons();
-    }
-    //---Play/Pause/Previous/Next-btn Click Event---
-    bindPlaybackButtons() {
-        const playPauseBtn = document.getElementById('play-pause-btn');
-        const prevBtn = document.getElementById('prev-btn');
-        const nextBtn = document.getElementById('next-btn');
+//Boolean Initialization
+let isPlaying = false;
+let isLiked = false;
+let isDisliked = false;
+//DOM References
+const playPauseIcon = document.querySelector('#play-pause-btn .control-icon');
+const likeIcon = document.querySelector('#like-btn .control-icon');
+const dislikeIcon = document.querySelector('#dislike-btn .control-icon');
 
-        if (playPauseBtn) {
-            playPauseBtn.addEventListener('click', () => this.togglePlayPause());
-        }
-        if (prevBtn) {
-            prevBtn.addEventListener('click', () => this.playPrevious());
-        }
-        if (nextBtn) {
-            nextBtn.addEventListener('click', () => this.playNext());
-        }
+//---Play/Pause Fucntion---
+function togglePlayPause() {
+    isPlaying = !isPlaying;
+    if (playPauseIcon) {
+        //Ternary Operator for code clarity
+        playPauseIcon.textContent = isPlaying ? '⏸️' : '▶️';
     }
-    //---Play/Pause Fucntion---
-    togglePlayPause() {
-        this.isPlaying = !this.isPlaying;
+    //Debug output
+    console.log("Play/Pause triggered");
+}
 
-        const icon = document.querySelector('#play-pause-btn .control-icon');
-        if (!icon) return;
+//---Previous Song Function---
+function playPrevious() {
+    currentIndex--;
+    //loadSong(currentIndex); "Song function pending"
+    //Reset icon once song plays automatically
+    isPlaying = true;
+    if (playPauseIcon) {
+        playPauseIcon.textContent = '⏸️'; 
+    }
+    //Debug Output
+    console.log("Previous song triggered");
+}
 
-        if (this.isPlaying) {
-            this.currentSong.play();
-            icon.textContent = '⏸️';  // pause icon
-        } else {
-            this.currentSong.pause();
-            icon.textContent = '▶️';  // play icon
-        }
+//---Next Song Function---
+function playNext() {
+    currentIndex++;
+    //loadSong(currentIndex); "Song function pending"
+    //Reset icon once song plays automatically
+    isPlaying = true;
+    if (playPauseIcon) {
+        playPauseIcon.textContent = '⏸️'; // Show pause icon (it's playing)
     }
-    //---Previous Song Function---
-    playPrevious() {
-        this.currentIndex--;
-        this.loadSong(this.currentIndex);
-        console.log("Previous song triggered");
-        this.loadSong(index - 1);
-    }
-    //---Next Song Function---
-    playNext() {
-        this.currentIndex++;
-        this.loadSong(this.currentIndex);
-        console.log("Next song triggered");
-        this.loadSong(index + 1);
-    }
-    //---Like button icon switch---
-    toggleLike() {
-        this.isLiked = !this.isLiked;
-        this.isDisliked = false;
+    //Debug Output
+    console.log("Next song triggered");
+}
 
-        const likeBtn = document.querySelector('#like-btn .icon');
-        const dislikeBtn = document.querySelector('#dislike-btn .icon');
-        //---Pending image from frontend---
-        if (likeBtn) likeBtn.textContent = this.isLiked ? 'Image Pending' : 'Image Pending';
-        if (dislikeBtn) dislikeBtn.textContent = 'Image Pending';
+//---Like button icon switch---
+function addToLikedSongs() {
+    isLiked = !isLiked;
+    isDisliked = false;
+    //Icon toggle
+    if (likeIcon) {
+        likeIcon.style.color = isLiked ? '👍' : '👍🏻';
     }
-    //---Dislike button icon switch---
-    toggleDislike() {
-        this.isDisliked = !this.isDisliked;
-        this.isLiked = false;
+    if (dislikeIcon) {
+        dislikeIcon.style.color = '👍🏻';
+    }
+    //Debug Output
+    console.log("Like button triggered");
+}
 
-        const dislikeBtn = document.querySelector('#dislike-btn .icon');
-        const likeBtn = document.querySelector('#like-btn .icon');
-        //---Pending image from frontend---
-        if (dislikeBtn) dislikeBtn.textContent = this.isDisliked ? 'Image Pending' : 'Image Pending';
-        if (likeBtn) likeBtn.textContent = 'Image Pending';
+//---Dislike button icon switch---
+function addToDislikedSongs() {
+    isDisliked = !isDisliked;
+    isLiked = false;
+    if (dislikeIcon) {
+        //Icon toggle
+        dislikeIcon.style.color = isDisliked ? '👎' : '👎🏻';
     }
+    if (likeIcon) {
+        likeIcon.style.color = '👎🏻';
+    }
+    //Debug Output
+    console.log("Dislike button triggered");
 }
 //================================
 //  Kuan: Playback Interactions    
 //================================
+
+/*************************************
+    Udhay: Audio PLayback
+ *************************************/
+
+
+/*************************************
+ * GLOBAL STATE
+ *************************************/
+let currentQueue = [];
+let currentIndex = 0;
+let audioElement = null; 
+
+
+/*************************************
+ * SHUFFLE / RANDOMIZER
+ *************************************/
+function shuffleArray(arr) {
+  const copy = arr.slice(); 
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy;
+}
+
+
+/*************************************
+ * BUILD QUEUE FOR MOOD
+ *************************************/
+function buildQueueForMood(mood) {
+  if (typeof songsByMood === "undefined") {
+    console.error("songsByMood is not defined. Load songs.js first.");
+    return;
+  }
+
+  const moodKey = mood.toLowerCase();
+  const songs = songsByMood[moodKey];
+
+  if (!songs || songs.length === 0) {
+    alert("No songs available for this mood.");
+    return;
+  }
+
+  currentQueue = shuffleArray(songs);
+  currentIndex = 0;
+  loadCurrentSong();
+  renderQueue();
+}
+
+
+/*************************************
+ * LOAD + PLAY CURRENT SONG
+ *************************************/
+function loadCurrentSong() {
+  if (!currentQueue.length) return;
+
+  const song = currentQueue[currentIndex];
+
+  const playerDiv = document.getElementById("player");
+  const nowPlaying = document.getElementById("nowPlaying");
+
+  if (nowPlaying) {
+    nowPlaying.textContent = "Now playing: " + song.title;
+  }
+
+  if (!playerDiv) return;
+
+  playerDiv.innerHTML = `
+    <audio id="audio-player" controls autoplay src="${song.file}">
+      Your browser does not support the audio element.
+    </audio>
+  `;
+
+  audioElement = document.getElementById("audio-player");
+
+  if (!audioElement) return;
+
+  audioElement.addEventListener("ended", () => {
+    currentIndex = (currentIndex + 1) % currentQueue.length;
+    loadCurrentSong();
+  });
+
+  audioElement.play().catch(() => {
+    console.log("Autoplay blocked until the user interacts with the page.");
+  });
+
+  renderQueue();
+}
+
+
+/*************************************
+ * DISPLAY QUEUE
+ *************************************/
+function renderQueue() {
+  const queueList = document.getElementById("queueList");
+  if (!queueList) return;
+
+  queueList.innerHTML = "";
+
+  currentQueue.forEach((song, index) => {
+    const li = document.createElement("li");
+    li.textContent = (index + 1) + ". " + song.title;
+
+    if (index === currentIndex) {
+      li.style.fontWeight = "bold";
+    }
+
+    queueList.appendChild(li);
+  });
+  
+}
+
+/*************************************
+    Udhay: Audio Playback
+ *************************************/
+
+
+
+
+
+
+
+

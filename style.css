@@ -207,6 +207,27 @@ p {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
+/* End of Playback CSS */
+
+/* Liked/Disliked Songs Tables */
+
+.simple-grid {
+    border: none;
+    margin: 0 auto;
+    border-collapse: collapse;
+    width: 500px;
+    height: auto;
+}
+
+.simple-grid td {
+    border: none;
+    font-size: 1.5rem;
+    width: 600px;
+    height: 40px;
+}
+
+/* End of Liked/Disliked Songs Tables */
+
 /* 5. Responsive Design Breakpoints (Media Queries)*/
 
 /* Tablet/Small Desktop Adjustment */
