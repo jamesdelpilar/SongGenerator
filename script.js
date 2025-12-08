@@ -1,3 +1,9 @@
+/*************************************
+ * GLOBAL STATE
+ *************************************/
+let currentQueue = [];
+let currentIndex = 0;
+let audioElement = null; 
 let currentSong = ""; // stores currently generated song
 
 // DOM references
@@ -11,7 +17,7 @@ const dislikedList = document.getElementById("dislikedList");
 const listsSection = document.getElementById("lists-section");
 
 // Handle mood selection → generate a song
-function handleMoodClick(mood) {
+function buildQueueForMood(mood) {
     // Example: Replace with your real generator
     currentSong = generateRandomSong(mood);
     
@@ -115,7 +121,7 @@ function playPrevious() {
 
 //---Next Song Function---
 function playNext() {
-    currentIndex++;
+    currentIndex = (currentIndex + 1) % currentQueue.length;
     //loadSong(currentIndex); "Song function pending"
     //Reset icon once song plays automatically
     isPlaying = true;
@@ -165,14 +171,6 @@ function addToDislikedSongs() {
 
 
 /*************************************
- * GLOBAL STATE
- *************************************/
-let currentQueue = [];
-let currentIndex = 0;
-let audioElement = null; 
-
-
-/*************************************
  * SHUFFLE / RANDOMIZER
  *************************************/
 function shuffleArray(arr) {
@@ -208,7 +206,6 @@ function buildQueueForMood(mood) {
   loadCurrentSong();
   renderQueue();
 }
-
 
 /*************************************
  * LOAD + PLAY CURRENT SONG
@@ -275,11 +272,3 @@ function renderQueue() {
 /*************************************
     Udhay: Audio Playback
  *************************************/
-
-
-
-
-
-
-
-
