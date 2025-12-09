@@ -49,6 +49,10 @@ function addSongToList(song, listElement) {
 }
 
         // ===== 3. Shuffle =====
+
+    //let currentQueue = [];
+    //let currentIndex = 0;
+
     function shuffleArray(arr) {
       const copy = arr.slice();
       for (let i = copy.length - 1; i > 0; i--) {
