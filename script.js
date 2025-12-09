@@ -17,11 +17,9 @@ const dislikedList = document.getElementById("dislikedList");
 const listsSection = document.getElementById("lists-section");
 
 // Handle mood selection → generate a song
-function buildQueueForMood(mood) {
+function handleMoodClick(mood) {
     // Example: Replace with your real generator
-    currentSong = generateRandomSong(mood);
-    
-    currentSongDisplay.textContent = currentSong;
+    buildQueueForMood(mood);
 
     // Show song area + lists
     songControls.style.display = "block";
