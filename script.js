@@ -50,9 +50,6 @@ function addSongToList(song, listElement) {
 
         // ===== 3. Shuffle =====
 
-    //let currentQueue = [];
-    //let currentIndex = 0;
-
     function shuffleArray(arr) {
       const copy = arr.slice();
       for (let i = copy.length - 1; i > 0; i--) {
@@ -70,7 +67,7 @@ function addSongToList(song, listElement) {
         return;
       }
 
-      currentQueue = shuffleArray(songs); // all 15 shuffled
+      currentQueue = shuffleArray(songs);
       currentIndex = 0;
 
       renderQueue();
@@ -162,11 +159,6 @@ function addToDislikedSongs() {
 //================================
 //  Kuan: Playback Interactions    
 //================================
-
-/*************************************
-    Udhay: Audio PLayback
- *************************************/
-
 
 /*************************************
  * SHUFFLE / RANDOMIZER
@@ -266,7 +258,3 @@ function renderQueue() {
   });
   
 }
-
-/*************************************
-    Udhay: Audio Playback
- *************************************/
