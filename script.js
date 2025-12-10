@@ -269,3 +269,37 @@ function handleMoodClick(mood) {
     // MDN: window.location.href - https://developer.mozilla.org/en-US/docs/Web/API/Window/location
     window.location.href = `nowPlaying.html?mood=${moodParam}`;
 }
+// This line navigates the page and passes the mood
+function handleMoodClick(mood) {
+    window.location.href = `nowPlaying.html?mood=${mood.toLowerCase()}`; 
+}
+
+// This line navigates the page and passed the stock image from the main home page
+document.addEventListener('DOMContentLoaded', () => {
+    const albumArtElement = document.getElementById('album-art');
+    
+    // 1. Get the URL parameters
+    const params = new URLSearchParams(window.location.search);
+    const mood = params.get('mood'); // e.g., 'study'
+
+    if (mood && albumArtElement) {
+        
+        // 2. Determine the correct file name
+        let fileName;
+
+        if (mood === 'study') {
+            fileName = 'Study-1.png';
+        } else {
+            const capitalizedMood = mood.charAt(0).toUpperCase() + mood.slice(1);
+            fileName = `${capitalizedMood}.png`;
+        }
+        
+        // 3. Set the image source path
+        albumArtElement.src = `Images/${fileName}`; 
+        
+        albumArtElement.alt = `${fileName} Playlist Cover`;
+        
+        // CRITICAL: Start the music playback (This part remains the same)
+        buildQueueForMood(mood);
+    }
+});
