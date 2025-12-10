@@ -258,3 +258,14 @@ function renderQueue() {
   });
   
 }
+
+// Function in script.js (called by the 'onclick' event on the mood cards)
+function handleMoodClick(mood) {
+    // 1. Convert the mood name to lowercase and encode it for the URL.
+    // MDN: encodeURIComponent() - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent
+    const moodParam = encodeURIComponent(mood.toLowerCase());
+    
+    // 2. Direct the browser to the new page with the mood parameter attached.
+    // MDN: window.location.href - https://developer.mozilla.org/en-US/docs/Web/API/Window/location
+    window.location.href = `nowPlaying.html?mood=${moodParam}`;
+}
