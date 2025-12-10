@@ -26,11 +26,6 @@ function handleMoodClick(mood) {
     listsSection.style.display = "block";
 }
 
-// Fake generator (replace with your real one)
-function generateRandomSong(mood) {
-    return `${mood} Song #${Math.floor(Math.random() * 100)}`;
-}
-
 // Add to liked songs
 //likeBtn.addEventListener("click", () => {
 //    addSongToList(currentSong, likedList);
@@ -159,20 +154,6 @@ function addToDislikedSongs() {
 //================================
 //  Kuan: Playback Interactions    
 //================================
-
-/*************************************
- * SHUFFLE / RANDOMIZER
- *************************************/
-function shuffleArray(arr) {
-  // MDN: Array.prototype.slice() - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice
-  const copy = arr.slice(); 
-  for (let i = copy.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [copy[i], copy[j]] = [copy[j], copy[i]];
-  }
-  return copy;
-}
-
 
 /*************************************
  * BUILD QUEUE FOR MOOD
