@@ -92,6 +92,14 @@ function togglePlayPause() {
         //Ternary Operator for code clarity
         playPauseIcon.textContent = isPlaying ? '⏸️' : '▶️';
     }
+
+    if (audioElement) { 
+        if (isPlaying) {
+            audioElement.play(); 
+        } else {
+            audioElement.pause();
+        }
+    }
     //Debug output
     console.log("Play/Pause triggered");
 }
