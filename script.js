@@ -210,7 +210,6 @@ function loadCurrentSong() {
   `;
 
   audioElement = document.getElementById("audio-player");
-
   if (!audioElement) return;
 
   audioElement.addEventListener("ended", () => {
