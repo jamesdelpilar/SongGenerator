@@ -4,17 +4,17 @@
 let currentQueue = [];
 let currentIndex = 0;
 let audioElement = null; 
-let currentSong = ""; // stores currently generated song
 
 // DOM references
-const songControls = document.getElementById("song-controls");
-const currentSongDisplay = document.getElementById("current-song");
-
+const albumArtElement = document.getElementById('album-art');
+const nowPlayingDisplay = document.getElementById("nowPlaying");
+const playerDiv = document.getElementById("player");
 const likeBtn = document.getElementById("likeBtn");
 const dislikeBtn = document.getElementById("dislikeBtn");
 const likedList = document.getElementById("likedList");
 const dislikedList = document.getElementById("dislikedList");
 const listsSection = document.getElementById("lists-section");
+const songControls = document.getElementById("song-controls"); //ADDED: Fixes 'songControls is not defined"
 
 // Handle mood selection → generate a song
 function handleMoodClick(mood) {
@@ -69,9 +69,6 @@ function addSongToList(song, listElement) {
       playCurrentSong();
     }
 
-  
-
-    
 //================================
 //  Kuan: Playback Interactions
 //================================
