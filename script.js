@@ -89,7 +89,6 @@ function togglePlayPause() {
         //Ternary Operator for code clarity
         playPauseIcon.textContent = isPlaying ? '⏸️' : '▶️';
     }
-
     if (audioElement) { 
         if (isPlaying) {
             audioElement.play(); 
@@ -104,7 +103,7 @@ function togglePlayPause() {
 //---Previous Song Function---
 function playPrevious() {
     currentIndex--;
-    //loadSong(currentIndex); "Song function pending"
+    loadCurrentSong();
     //Reset icon once song plays automatically
     isPlaying = true;
     if (playPauseIcon) {
@@ -113,11 +112,11 @@ function playPrevious() {
     //Debug Output
     console.log("Previous song triggered");
 }
-
+  
 //---Next Song Function---
 function playNext() {
     currentIndex = (currentIndex + 1) % currentQueue.length;
-    //loadSong(currentIndex); "Song function pending"
+    loadCurrentSong();
     //Reset icon once song plays automatically
     isPlaying = true;
     if (playPauseIcon) {
