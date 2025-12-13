@@ -74,7 +74,7 @@ function addSongToList(song, listElement) {
 //================================
 
 //Boolean Initialization
-let isPlaying = false;
+let isPlaying = true; //Changed Boolean to true since the audio autoplays once a mood is selected
 let isLiked = false;
 let isDisliked = false;
 //DOM References
@@ -102,7 +102,7 @@ function togglePlayPause() {
 
 //---Previous Song Function---
 function playPrevious() {
-    currentIndex = (currentIndex - 1 + currentQueue.length) % currentQueue.length; //Prevent negative index value if triggered on first song  
+    currentIndex = (currentIndex - 1 + currentQueue.length) % currentQueue.length; //Prevents negative index value if triggered on first song  
     loadCurrentSong();
     //Reset icon once song plays automatically
     isPlaying = true;
@@ -115,7 +115,7 @@ function playPrevious() {
   
 //---Next Song Function---
 function playNext() {
-    currentIndex = (currentIndex + 1) % currentQueue.length; //Using % to send the last song back to the first
+    currentIndex = (currentIndex + 1) % currentQueue.length; //Using % to enforce the index count stays within array range
     loadCurrentSong();
     //Reset icon once song plays automatically
     isPlaying = true;
