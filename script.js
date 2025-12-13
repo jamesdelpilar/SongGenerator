@@ -102,7 +102,7 @@ function togglePlayPause() {
 
 //---Previous Song Function---
 function playPrevious() {
-    currentIndex--;
+    currentIndex = (currentIndex - 1 + currentQueue.length) % currentQueue.length; //Prevent negative index value if triggered on first song  
     loadCurrentSong();
     //Reset icon once song plays automatically
     isPlaying = true;
@@ -115,7 +115,7 @@ function playPrevious() {
   
 //---Next Song Function---
 function playNext() {
-    currentIndex = (currentIndex + 1) % currentQueue.length;
+    currentIndex = (currentIndex + 1) % currentQueue.length; //Using % to send the last song back to the first
     loadCurrentSong();
     //Reset icon once song plays automatically
     isPlaying = true;
