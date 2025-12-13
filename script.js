@@ -74,7 +74,7 @@ function addSongToList(song, listElement) {
 //================================
 
 //Boolean Initialization
-let isPlaying = false;
+let isPlaying = true; //Changed Boolean to true since the audio autoplays once a mood is selected
 let isLiked = false;
 let isDisliked = false;
 //DOM References
@@ -89,7 +89,6 @@ function togglePlayPause() {
         //Ternary Operator for code clarity
         playPauseIcon.textContent = isPlaying ? '⏸️' : '▶️';
     }
-
     if (audioElement) { 
         if (isPlaying) {
             audioElement.play(); 
@@ -103,8 +102,8 @@ function togglePlayPause() {
 
 //---Previous Song Function---
 function playPrevious() {
-    currentIndex--;
-    //loadSong(currentIndex); "Song function pending"
+    currentIndex = (currentIndex - 1 + currentQueue.length) % currentQueue.length; //Prevents negative index value if triggered on first song  
+    loadCurrentSong();
     //Reset icon once song plays automatically
     isPlaying = true;
     if (playPauseIcon) {
@@ -113,11 +112,11 @@ function playPrevious() {
     //Debug Output
     console.log("Previous song triggered");
 }
-
+  
 //---Next Song Function---
 function playNext() {
-    currentIndex = (currentIndex + 1) % currentQueue.length;
-    //loadSong(currentIndex); "Song function pending"
+    currentIndex = (currentIndex + 1) % currentQueue.length; //Using % to enforce the index count stays within array range
+    loadCurrentSong();
     //Reset icon once song plays automatically
     isPlaying = true;
     if (playPauseIcon) {
