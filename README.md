@@ -15,6 +15,13 @@ unique and less influenced by algorithms.
 - Audio Player to play .mp3 files per mood/category
 - Audio playback functionality to play, pause, skip to next or previous song
 
+## Screenshots
+
+## Contributions
+
+## Instructions 
+Visit and enjoy: [Song Generator](https://jamesdelpilar.github.io/SongGenerator/)
+
 ## Milestones
 
 ### Phase 2
@@ -22,3 +29,7 @@ unique and less influenced by algorithms.
 
 ### Final (Placeholder)
 ![Website Gif](assets/SongGenerator-Phase2.gif)
+
+## Video
+
+## Links
