@@ -20,31 +20,31 @@ unique and less influenced by algorithms.
 ![Website Now Playing Page](assets/NowPlaying.png)
 
 ## Contributions
-Jesse Cooper  
-Role: Javascript Developer    
-Contributions:  
+**Jesse Cooper**  
+**Role:** Javascript Developer    
+**Contributions:**  
 - Provided song list for the 6 moods
 - Implemented pseudocode for liked and disliked songs being added to its respective tables on the Liked & Disliked pages
 
-James Del Pilar  
-Role: Project Lead  
-Contributions:  
+**James Del Pilar**  
+**Role:** Project Lead  
+**Contributions:**  
 - Setup weekly meetings & communicated daily with team members on what is expected
 - Setup GitHub repository with best practices (Branches w/rules, Project Board, Pull Requests)
 - Tested main branch alongside official website for any bugs and/or errors
 - Wrote and submit all necessary deliverables on behalf of the team
 
-Owen Fedchenko  
-Role:Frontend Developer  
-Contributions:  
+**Owen Fedchenko**  
+**Role:** Frontend Developer  
+**Contributions:**  
 - Implemented the navigation bar
 - Implemented the playback buttons (play, pause, previous, next, like and dislike) on the frontend
 - Implemented the Now Playing, Liked, and Disliked pages on the frontend
 - Implemented tables for liked and disliked songs
 
-Kuan Yi Li  
-Role: Javascript Developer  
-Contributions:  
+**Kuan Yi Li**  
+**Role:** Javascript Developer  
+**Contributions:**  
 - Implemented Play/Pause button toggle for starting and pausing playback
 - Implemented Next Song and Previous Song buttons for playlist navigation
 - Added console output triggers for all buttons to support early-stage testing before MP3 data and loadCurrentSong() were available
@@ -53,9 +53,9 @@ Contributions:
 - Utilized the modulo operator to ensure the song index remains within the playlist array range
 - Resolved dead-click scenarios to maintain accurate boolean states for playback and rating status
 
-Abeer Rashid  
-Role:Frontend Developer & Javascript Developer  
-Contributions:  
+**Abeer Rashid**  
+**Role:** Frontend Developer & Javascript Developer  
+**Contributions:**  
 - Styled the overall aesthetic of the website 
 - Implemented the home page with 6 dynamic grid layout (Workout, Driving, Study, Commute, Coding, Sleep) with consistent image loading between pages 
 - Added hover for better user experience with the buttons
