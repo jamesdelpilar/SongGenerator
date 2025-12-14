@@ -35,3 +35,7 @@ Visit and enjoy: [Song Generator](https://jamesdelpilar.github.io/SongGenerator/
 ## Video
 
 ## Links
+[Website](https://jamesdelpilar.github.io/SongGenerator/) <br>
+[Branches](https://github.com/jamesdelpilar/SongGenerator/branches/active) <br>
+[Project Board](https://github.com/users/jamesdelpilar/projects/1) <br>
+[Contributors](https://github.com/jamesdelpilar/SongGenerator/graphs/contributors) <br>
