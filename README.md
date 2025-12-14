@@ -16,8 +16,29 @@ unique and less influenced by algorithms.
 - Audio playback functionality to play, pause, skip to next or previous song
 
 ## Screenshots
+![Website Home Page](assets/HomePage.png)
+![Website Now Playing Page](assets/NowPlaying.png)
 
 ## Contributions
+Jesse Cooper
+Role: Javascript Developer
+Contributions:
+
+James Del Pilar
+Role:Project Lead
+Contributions:
+
+Owen Fedchenko
+Role:Frontend Developer
+Contributions:
+
+Abeer Rashid
+Role:Frontend Developer & Javascript Developer
+Contributions:
+
+Kuan Yi Li
+Role: Javascript Developer
+Contributions:
 
 ## Instructions 
 Visit and enjoy: [Song Generator](https://jamesdelpilar.github.io/SongGenerator/)
